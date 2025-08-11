@@ -1,0 +1,104 @@
+services:
+  - type: web
+    name: vita
+    env: php
+    plan: free
+    buildCommand: |
+      composer install --no-dev --optimize-autoloader
+      php artisan config:clear
+      php artisan route:clear
+      php artisan cache:clear
+    startCommand: php artisan serve --host 0.0.0.0 --port 10000
+    envVars:
+      - key: APP_NAME
+        value: VITA
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        value: base64:XTgqvBmbglxk6eHcq2wl5ax+7r328MRLtUpSteMP9JQ=
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_URL
+        value: https://vita.onrender.com
+      - key: APP_LOCALE
+        value: en
+      - key: APP_FALLBACK_LOCALE
+        value: en
+      - key: APP_FAKER_LOCALE
+        value: en_US
+      - key: APP_MAINTENANCE_DRIVER
+        value: file
+      - key: PHP_CLI_SERVER_WORKERS
+        value: "4"
+      - key: BCRYPT_ROUNDS
+        value: "12"
+      - key: LOG_CHANNEL
+        value: stack
+      - key: LOG_STACK
+        value: single
+      - key: LOG_DEPRECATIONS_CHANNEL
+        value: null
+      - key: LOG_LEVEL
+        value: error
+      - key: DB_CONNECTION
+        value: mongodb
+      - key: MONGODB_URI
+        value: mongodb+srv://dbUser:Leonardo2720@cluster0.fc824vg.mongodb.net/SmartFlow
+      - key: MONGODB_DATABASE
+        value: SmartFlow
+      - key: SESSION_DRIVER
+        value: database
+      - key: SESSION_LIFETIME
+        value: "120"
+      - key: SESSION_ENCRYPT
+        value: "false"
+      - key: SESSION_PATH
+        value: /
+      - key: SESSION_DOMAIN
+        value: null
+      - key: BROADCAST_CONNECTION
+        value: log
+      - key: FILESYSTEM_DISK
+        value: public
+      - key: QUEUE_CONNECTION
+        value: database
+      - key: CACHE_STORE
+        value: database
+      - key: MEMCACHED_HOST
+        value: 127.0.0.1
+      - key: REDIS_CLIENT
+        value: phpredis
+      - key: REDIS_HOST
+        value: 127.0.0.1
+      - key: REDIS_PASSWORD
+        value: null
+      - key: REDIS_PORT
+        value: "6379"
+      - key: MAIL_MAILER
+        value: log
+      - key: MAIL_HOST
+        value: smtp.tu-proveedor.com
+      - key: MAIL_PORT
+        value: "587"
+      - key: MAIL_USERNAME
+        value: tu_usuario
+      - key: MAIL_PASSWORD
+        value: tu_password
+      - key: MAIL_ENCRYPTION
+        value: tls
+      - key: MAIL_FROM_ADDRESS
+        value: no-reply@vita.com.mx
+      - key: MAIL_FROM_NAME
+        value: VITA
+      - key: AWS_ACCESS_KEY_ID
+        value: ""
+      - key: AWS_SECRET_ACCESS_KEY
+        value: ""
+      - key: AWS_DEFAULT_REGION
+        value: us-east-1
+      - key: AWS_BUCKET
+        value: ""
+      - key: AWS_USE_PATH_STYLE_ENDPOINT
+        value: "false"
+      - key: VITE_APP_NAME
+        value: VITA
